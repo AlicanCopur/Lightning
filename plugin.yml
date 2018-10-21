@@ -1,0 +1,11 @@
+name: Lightning
+version: 1.0
+main: AlicanCopur\Lightning\Main
+api: [3.0.6, 4.0.0]
+author: AlicanCopur
+commands:
+  lightning:
+    description: Create a lightning in your coords.
+permissions:
+  lightning.use:
+    default: op
