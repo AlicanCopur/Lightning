@@ -8,12 +8,12 @@
 * /_/   \_\_|_|\___\__,_|_| |_|\____|
 *                                 
 *                                  
-* -I'm getting stronger if I'm not dying-
+*  -I'm getting stronger if I'm not dying-
 *
-*@version 1.0
-*@author AlicanCopur
-*@copyright HashCube Network© | 2015 - 2018 
-*@license Açık yazılım lisansı altındadır. Tüm hakları saklıdır. 
+* @version 1.0
+* @author AlicanCopur
+* @copyright HashCube Network © | 2015 - 2018 
+* @license Açık yazılım lisansı altındadır. Tüm hakları saklıdır. 
 */                      
 
 namespace AlicanCopur\Lightning;
