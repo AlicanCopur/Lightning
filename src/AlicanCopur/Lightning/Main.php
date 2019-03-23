@@ -12,13 +12,12 @@
 *
 * @version 1.0
 * @author AlicanCopur
-* @copyright HashCube Network © | 2015 - 2018 
+* @copyright HashCube Network © | 2015 - 2019
 * @license Açık yazılım lisansı altındadır. Tüm hakları saklıdır. 
 */                      
 
 namespace AlicanCopur\Lightning;
 
-use pocketmine\level\Level;
 use pocketmine\{Player, Server};
 use pocketmine\plugin\PluginBase;
 use pocketmine\math\Vector3;
@@ -32,7 +31,7 @@ class Main extends PluginBase{
   }
   
   public function onCommand(CommandSender $o, Command $cmd, string $label, array $args):bool{
-  	if($cmd->getName() == "lightning" && $o->hasPermission("lightning.use")){
+  	if($o->hasPermission("lightning.use")){
   		$x = $o->getX();
   		$y = $o->getY();
   		$z = $o->getZ();
@@ -47,7 +46,7 @@ class Main extends PluginBase{
     $pk->type = 93;
     $pk->entityRuntimeId = Entity::$entityCount++;
     $pk->motion = null;
-    $pk->position = new \pocketmine\math\Vector3($x, $y, $z);
+    $pk->position = Vector3($x, $y, $z);
     foreach($level->getPlayers() as $pl){
       $pl->dataPacket($pk);
     }
