@@ -27,16 +27,11 @@ use pocketmine\command\{Command, CommandSender};
 
 class Main extends PluginBase{
 	
-  public function onEnable(){
-  }
   
   public function onCommand(CommandSender $o, Command $cmd, string $label, array $args):bool{
+	if(!$o instanceof Player) return false;
   	if($o->hasPermission("lightning.use")){
-  		$x = $o->getX();
-  		$y = $o->getY();
-  		$z = $o->getZ();
-  		$level = $o->getLevel();
-  		$this->createLightning($x, $y, $z, $level);
+  		$this->createLightning($o->getX(), $o->getY(), $o->getZ(), $o->getLevel());
   	}
   	return true;
   }
