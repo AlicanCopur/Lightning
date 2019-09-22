@@ -41,7 +41,7 @@ class Main extends PluginBase{
     $pk->type = 93;
     $pk->entityRuntimeId = Entity::$entityCount++;
     $pk->motion = null;
-    $pk->position = Vector3($x, $y, $z);
+    $pk->position = new Vector3($x, $y, $z);
     foreach($level->getPlayers() as $pl){
       $pl->dataPacket($pk);
     }
