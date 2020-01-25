@@ -12,7 +12,7 @@
 *
 * @version 1.0
 * @author AlicanCopur
-* @copyright HashCube Network © | 2015 - 2019
+* @copyright HashCube Network © | 2015 - 2020
 * @license Açık yazılım lisansı altındadır. Tüm hakları saklıdır. 
 */                      
 
@@ -22,7 +22,7 @@ use pocketmine\{Player, Server};
 use pocketmine\plugin\PluginBase;
 use pocketmine\math\Vector3;
 use pocketmine\entity\Entity;
-use pocketmine\network\mcpe\protocol\AddEntityPacket;
+use pocketmine\network\mcpe\protocol\AddActorPacket;
 use pocketmine\command\{Command, CommandSender};
 
 class Main extends PluginBase{
@@ -37,7 +37,7 @@ class Main extends PluginBase{
   }
   
   public function createLightning($x, $y, $z, $level){
-    $pk = new AddEntityPacket();
+    $pk = new AddActorPacket();
     $pk->type = 93;
     $pk->entityRuntimeId = Entity::$entityCount++;
     $pk->motion = null;
