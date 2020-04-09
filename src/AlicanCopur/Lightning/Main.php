@@ -44,7 +44,7 @@ class Main extends PluginBase{
       }
       return true;
   }
-  public function createLightning(Vector $pos, Level $level){
+  public function createLightning(Vector3 $pos, Level $level){
     $pk = new AddActorPacket();
     $pk->type = 93;
     $pk->entityRuntimeId = Entity::$entityCount++;
