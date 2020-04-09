@@ -18,32 +18,40 @@
 
 namespace AlicanCopur\Lightning;
 
-use pocketmine\{Player, Server};
+use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
+use pocketmine\level\Level;
 use pocketmine\math\Vector3;
-use pocketmine\entity\Entity;
 use pocketmine\network\mcpe\protocol\AddActorPacket;
 use pocketmine\command\{Command, CommandSender};
 
 class Main extends PluginBase{
 	
   
-  public function onCommand(CommandSender $o, Command $cmd, string $label, array $args):bool{
-	if(!$o instanceof Player) return false;
-  	if($o->hasPermission("lightning.use")){
-  		$this->createLightning($o->getX(), $o->getY(), $o->getZ(), $o->getLevel());
-  	}
-  	return true;
+  public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args):bool{
+      if(!$sender instanceof Player) return false;
+      if($sender->hasPermission("lightning.use")){
+	  if(isset($args[0])){
+	      if($player = $this->getServer()->getPlayer($args[0]) instanceof Player){
+	          $pos = $player->asVector3();
+	      } else {
+		  $pos = $sender->asVector3();    
+	      }
+	  } else {
+	      $pos = $sender->asVector3();
+	  }
+          $this->createLightning($pos, $sender->getLevel());
+      }
+      return true;
   }
-  
-  public function createLightning($x, $y, $z, $level){
+  public function createLightning(Vector $pos, Level $level){
     $pk = new AddActorPacket();
     $pk->type = 93;
     $pk->entityRuntimeId = Entity::$entityCount++;
     $pk->motion = null;
-    $pk->position = new Vector3($x, $y, $z);
+    $pk->position = $pos;
     foreach($level->getPlayers() as $pl){
-      $pl->dataPacket($pk);
+      	$pl->dataPacket($pk);
     }
   }
 }
