@@ -21,6 +21,7 @@ namespace AlicanCopur\Lightning;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\level\Level;
+use pocketmine\entity\Entity;
 use pocketmine\math\Vector3;
 use pocketmine\network\mcpe\protocol\AddActorPacket;
 use pocketmine\command\{Command, CommandSender};
